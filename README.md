@@ -5,6 +5,9 @@
 <h1 align="center">Class Mapper</h1>
 
 <p align="center">
+  <a href="https://david-dm.org/w3tecch/class-mapper">
+    <img src="https://david-dm.org/w3tecch/class-mapper/status.svg?style=flat" alt="dependency" />
+  </a>
   <a href="https://travis-ci.org/w3tecch/class-mapper">
     <img src="https://travis-ci.org/w3tecch/class-mapper.svg?branch=master" alt="travis" />
   </a>
