@@ -1,0 +1,14 @@
+environment:
+  nodejs_version: "8"
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - yarn install
+
+test_script:
+  - yarn test
+  - yarn build
+
+on_success:
+  - npm i -g coveralls
+  - cat coverage/lcov.info | coveralls
