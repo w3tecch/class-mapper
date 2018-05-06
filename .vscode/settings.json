@@ -1,0 +1,25 @@
+{
+  "cSpell.language": "en",
+  "editor.formatOnSave": true,
+  "tslint.enable": true,
+  "typescript.extension.sortImports.pathSortOrder": [
+    "package",
+    "relativeDownLevel",
+    "relativeUpLevel"
+  ],
+  "typescript.extension.sortImports.sortMethod": "path",
+  "typescript.extension.sortImports.sortOnSave": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "cSpell.words": [
+    "builtins",
+    "kleger",
+    "postbuild",
+    "posttest",
+    "postversion",
+    "prebuild",
+    "preversion",
+    "tecch",
+    "typecheck",
+    "w3tecch"
+  ]
+}
