@@ -2,7 +2,7 @@
 dist
 lib
 es
-coverage
+test/coverage
 
 ### node ###
 logs

@@ -20,9 +20,9 @@
     "build:lib": "tsc --outDir lib --module commonjs",
     "build:es": "tsc --outDir es --module es2015",
     "build:umd": "npm run build:es && rollup --config && dts-bundle --name dist/bundle --main es --outputAsModuleFolder",
-    "clean": "rimraf dist es lib coverage",
+    "clean": "rimraf dist es lib test/coverage",
     "typecheck": "tsc --noEmit",
-    "lint": "tslint --project tsconfig.json --type-check --format stylish",
+    "lint": "tslint --project tsconfig.json --format stylish",
     "test": "jest --env=jsdom --coverage",
     "test:watch": "jest --env=jsdom --watch --updateSnapshot",
     "prepublishOnly": "npm run build",
@@ -44,8 +44,29 @@
     "es",
     "dist"
   ],
+  "jest": {
+    "transform": {
+      ".(tsx?)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testPathIgnorePatterns": [
+      "<rootDir>/(node_modules|lib|es|dist)"
+    ],
+    "coverageDirectory": "<rootDir>/test/coverage",
+    "collectCoverageFrom": [
+      "src/**/*.{t,j}s?(x)",
+      "!src/**/*.d.ts"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "ts",
+      "tsx"
+    ]
+  },
   "dependencies": {
-    "@types/node": "^8.0.0",
+    "@types/node": "^10.0.4",
     "tslib": "^1.6.0"
   },
   "devDependencies": {
@@ -64,6 +85,6 @@
     "semver": "^5.4.0",
     "ts-jest": "^22.4.4",
     "tslint": "^5.6.0",
-    "typescript": "^2.4.0"
+    "typescript": "^2.8.3"
   }
 }
