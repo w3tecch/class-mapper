@@ -5,7 +5,10 @@
     "outDir": ".code",
     "newLine": "LF",
     "sourceRoot": "src",
-    "lib": ["dom", "es2017"],
+    "lib": [
+      "dom",
+      "es2017"
+    ],
     "moduleResolution": "node",
     "importHelpers": true,
     "declaration": true,
@@ -19,6 +22,7 @@
     "node_modules",
     "dist",
     "es",
-    "lib"
+    "lib",
+    "test"
   ]
 }

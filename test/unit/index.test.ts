@@ -1,4 +1,4 @@
-import { ClassMapper } from '..';
+import { ClassMapper } from '../../src';
 
 test('hello world', () => {
   const greeting = new ClassMapper();
