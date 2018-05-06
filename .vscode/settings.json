@@ -11,6 +11,7 @@
   "typescript.extension.sortImports.sortOnSave": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "cSpell.words": [
+    "backend",
     "builtins",
     "kleger",
     "postbuild",
@@ -20,6 +21,7 @@
     "preversion",
     "tecch",
     "typecheck",
+    "typestack",
     "w3tecch"
   ]
 }
