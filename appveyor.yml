@@ -10,7 +10,3 @@ build_script:
 
 test_script:
   - yarn test
-
-on_success:
-  - npm i -g coveralls
-  - cat test\coverage\lcov.info | node_modules\.bin\coveralls
