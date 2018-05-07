@@ -13,4 +13,4 @@ test_script:
 
 on_success:
   - npm i -g coveralls
-  - cat test/coverage/lcov.info | coveralls
+  - cat test\coverage\lcov.info | node_modules\.bin\coveralls
