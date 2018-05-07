@@ -12,6 +12,7 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "cSpell.words": [
     "backend",
+    "bobb",
     "builtins",
     "kleger",
     "postbuild",
