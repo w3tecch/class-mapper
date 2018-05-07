@@ -1,1 +1,1 @@
-export type TPropertyDecorator = (target: any, propertyKey: string, descriptor: PropertyDescriptor) => void;
+export type TPropertyDecorator = (target: any, propertyName: string) => void;

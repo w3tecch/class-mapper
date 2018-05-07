@@ -1,1 +1,1 @@
-export * from './map-to.decorator';
+export * from './map-from.decorator';

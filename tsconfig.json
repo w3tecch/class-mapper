@@ -16,12 +16,14 @@
     "sourceMap": true,
     "inlineSources": true,
     "noUnusedLocals": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "experimentalDecorators": true
   },
   "exclude": [
     "node_modules",
     "dist",
     "es",
+    "example",
     "lib",
     "test"
   ]
