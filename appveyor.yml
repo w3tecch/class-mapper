@@ -10,7 +10,6 @@ build_script:
 
 test_script:
   - yarn test
-  - yarn build
 
 on_success:
   - npm i -g coveralls
