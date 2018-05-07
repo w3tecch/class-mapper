@@ -5,10 +5,8 @@ install:
   - ps: Install-Product node $env:nodejs_version
   - yarn install
 
+build_script:
+  - npm run build
+
 test_script:
   - yarn test
-  - yarn build
-
-on_success:
-  - npm i -g coveralls
-  - cat test/coverage/lcov.info | coveralls
