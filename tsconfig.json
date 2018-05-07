@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "experimentalDecorators": true,
     "target": "es5",
     "module": "commonjs",
     "outDir": ".code",
@@ -24,7 +23,6 @@
     "dist",
     "es",
     "lib",
-    "test",
-    "demo"
+    "test"
   ]
 }
