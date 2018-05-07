@@ -11,6 +11,8 @@
   "typescript.extension.sortImports.sortOnSave": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "cSpell.words": [
+    "backend",
+    "bobb",
     "builtins",
     "kleger",
     "postbuild",
