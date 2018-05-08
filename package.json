@@ -69,6 +69,7 @@
   },
   "dependencies": {
     "@types/node": "^10.0.4",
+    "class-transformer": "^0.1.9",
     "tslib": "^1.6.0"
   },
   "devDependencies": {

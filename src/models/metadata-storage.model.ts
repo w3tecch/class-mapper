@@ -1,20 +1,20 @@
-import { MapFromModel } from './map-from.model';
+import { MapFromSourceModel } from './map-from-source.model';
 
 /**
  * model to store all metadata of decorators
  */
 export class MetadataStorageModel {
-  private mapTo: MapFromModel[] = [];
+  private mapFromSource: MapFromSourceModel[] = [];
 
-  public addMapFrom(mapFrom: MapFromModel) {
-    this.mapTo.push(mapFrom);
+  public addMapFromSource(mapFromSource: MapFromSourceModel) {
+    this.mapFromSource.push(mapFromSource);
   }
 
-  public getMapFrom(target: {}): MapFromModel[] {
-    return this.mapTo.filter(m => m.target === target);
+  public getMapFromSource(target: {}): MapFromSourceModel[] {
+    return this.mapFromSource.filter(m => m.target === target);
   }
 
   public clear(): void {
-    this.mapTo = [];
+    this.mapFromSource = [];
   }
 }
