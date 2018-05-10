@@ -1,4 +1,4 @@
-import { TransformOptions } from 'class-transformer';
+import { IMapOptions } from '../interfaces/map-options.interface';
 import { MapFromSourceModel, TMapFunction } from '../models/map-from-source.model';
 import { metadataStorage } from '../storage/storage';
 
@@ -7,9 +7,9 @@ import { metadataStorage } from '../storage/storage';
  * @param mapFunction Function to map from source to current value
  * @param options Mapping options
  */
-export function MapFromSource(mapFunction: TMapFunction, options?: TransformOptions) {
+export const MapFromSource = (mapFunction: TMapFunction, options?: IMapOptions) => {
   return (target: any, propertyKey: string) => {
     const metadata = new MapFromSourceModel(target.constructor, propertyKey, mapFunction, options);
     metadataStorage.addMapFromSource(metadata);
   };
-}
+};

@@ -1,19 +1,28 @@
-import { UserModel } from '../models/user.model';
+import { SourceUserModel } from '../models/source-user.model';
+import { TargetUserModel } from '../models/target-user.model';
 
 /**
  * plain user structure
  */
 
-export const userPlain = {
+const userPlain = {
   name1: 'John',
   name2: 'Doe'
 };
 
 /**
- * user model
+ * source user model
+ */
+export const sourceUser = new SourceUserModel();
+
+sourceUser.name1 = userPlain.name1;
+sourceUser.name1 = userPlain.name2;
+
+/**
+ * target user model
  */
 
-export const userModel = new UserModel();
+export const targetUser = new TargetUserModel();
 
-userModel.firstName = userPlain.name1;
-userModel.lastName = userPlain.name2;
+targetUser.firstName = userPlain.name1;
+targetUser.lastName = userPlain.name2;

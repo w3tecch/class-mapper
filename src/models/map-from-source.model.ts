@@ -1,15 +1,15 @@
-import { TransformOptions } from 'class-transformer';
+import { IMapOptions } from '../interfaces/map-options.interface';
 
 export type TMapFunction = (source: any) => any;
 
 /**
  * model to store metadata of MapFrom decorator
  */
-export class MapFromSourceModel {
+export class MapFromSourceModel<T> {
   constructor(
     public target: Function,
     public propertyKey: string,
     public mapFunction: TMapFunction,
-    public options?: TransformOptions
+    public options?: IMapOptions
   ) { }
 }

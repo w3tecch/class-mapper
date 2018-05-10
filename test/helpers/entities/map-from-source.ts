@@ -1,13 +1,13 @@
-import { TransformOptions } from 'class-transformer';
+import { IMapOptions } from '../../../src/interfaces/map-options.interface';
 import { MapFromSourceModel } from '../../../src/models/map-from-source.model';
-import { UserModel } from '../models/user.model';
+import { TargetUserModel } from '../models/target-user.model';
 
 /**
  * map from source model
  */
 
-export const target = new UserModel().constructor;
-const options: TransformOptions = { toPlainOnly: true, toClassOnly: true };
+export const target = new TargetUserModel().constructor;
+const options: IMapOptions = { groups: ['customer'] };
 
 export const mapFromSourceModelFirstName = new MapFromSourceModel(
   target,
