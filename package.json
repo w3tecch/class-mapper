@@ -22,7 +22,6 @@
     "build:es": "tsc --outDir es --module es2015",
     "build:umd": "npm run build:es && rollup --config && dts-bundle --name dist/class-mapper --main es --outputAsModuleFolder",
     "clean": "rimraf dist es lib test/coverage",
-    "serve": "nodemon ./example/index.ts --watch",
     "typecheck": "tsc --noEmit",
     "lint": "tslint --project tsconfig.json --format stylish",
     "test": "jest --env=jsdom --coverage",
@@ -77,7 +76,6 @@
     "coveralls": "^3.0.1",
     "dts-bundle": "^0.7.2",
     "jest": "^22.4.3",
-    "nodemon": "^1.17.4",
     "pascal-case": "^2.0.1",
     "rimraf": "^2.6.1",
     "rollup": "^0.58.2",
@@ -89,7 +87,6 @@
     "rollup-plugin-uglify": "^3.0.0",
     "semver": "^5.4.0",
     "ts-jest": "^22.4.4",
-    "ts-node": "^6.0.3",
     "tslint": "^5.6.0",
     "typescript": "^2.8.3"
   }
