@@ -5,7 +5,7 @@ import { MapFromSourceModel } from '../models/map-from-source.model';
 import { metadataStorage } from '../storage/storage';
 
 export class ClassMapper<T, U> {
-  private mapFromSourceMetadata: MapFromSourceModel<{}>[];
+  private mapFromSourceMetadata: MapFromSourceModel[];
   private targetModel: U;
 
   constructor(
@@ -13,7 +13,7 @@ export class ClassMapper<T, U> {
     public targetClass: IMapClass<U>,
     private options?: IMapOptions
   ) {
-    this.mapFromSourceMetadata = metadataStorage.getMapFromSource(sourceClass.constructor);
+    this.mapFromSourceMetadata = metadataStorage.getMapFromSource(targetClass);
     this.targetModel = new targetClass();
   }
 
@@ -24,11 +24,16 @@ export class ClassMapper<T, U> {
   }
 
   private executeMapFunctions(): void {
-    this.mapFromSourceMetadata.forEach(metadata => {
-      if (this.checkGroups(metadata.options)) {
-        this.targetModel[metadata.propertyKey] = metadata.mapFunction(this.sourceClass);
-      }
+    const filteredMetadata = this.filterMetadata();
+
+    filteredMetadata.forEach(metadata => {
+      this.targetModel[metadata.propertyKey] = metadata.mapFunction(this.sourceClass);
     });
+  }
+
+  private filterMetadata(): MapFromSourceModel[] {
+    return this.mapFromSourceMetadata.filter(metadata =>
+      this.checkGroups(metadata.options));
   }
 
   private checkGroups(metadataOptions?: IMapOptions): boolean {

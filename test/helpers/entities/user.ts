@@ -16,7 +16,7 @@ const userPlain = {
 export const sourceUser = new SourceUserModel();
 
 sourceUser.name1 = userPlain.name1;
-sourceUser.name1 = userPlain.name2;
+sourceUser.name2 = userPlain.name2;
 
 /**
  * target user model

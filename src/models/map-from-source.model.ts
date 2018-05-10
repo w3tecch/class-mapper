@@ -5,7 +5,7 @@ export type TMapFunction = (source: any) => any;
 /**
  * model to store metadata of MapFrom decorator
  */
-export class MapFromSourceModel<T> {
+export class MapFromSourceModel {
   constructor(
     public target: Function,
     public propertyKey: string,
