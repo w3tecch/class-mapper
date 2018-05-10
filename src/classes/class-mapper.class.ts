@@ -1,4 +1,3 @@
-import * as _ from 'lodash';
 import { IMapClass } from '../interfaces/map-class.interface';
 import { IMapOptions } from '../interfaces/map-options.interface';
 import { MapFromSourceModel } from '../models/map-from-source.model';
@@ -57,7 +56,7 @@ export class ClassMapper<T, U> {
     let transFromProperty = false;
 
     for (const group of this.options.groups) {
-      transFromProperty = _.includes(metadataOptions.groups, group);
+      transFromProperty = metadataOptions.groups.indexOf(group) >= 0;
 
       if (transFromProperty) {
         break;

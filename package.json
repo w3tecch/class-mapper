@@ -68,7 +68,6 @@
   },
   "dependencies": {
     "@types/node": "^10.0.4",
-    "lodash": "^4.17.10",
     "tslib": "^1.6.0"
   },
   "devDependencies": {

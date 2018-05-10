@@ -20,11 +20,10 @@
     "experimentalDecorators": true
   },
   "exclude": [
+    "test",
     "node_modules",
     "dist",
     "es",
-    "example",
-    "lib",
-    "test"
+    "lib"
   ]
 }
