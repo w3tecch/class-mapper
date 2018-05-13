@@ -75,12 +75,17 @@ export class ClassMapper<T, U> {
   }
 
   /**
-   * Execute mapClasses function for nested object
+   * Execute mapClasses function for nested object and array
    */
   private assignRecursive(metadata: MapFromSourceModel): void {
     if (metadata.options && metadata.options.type) {
       const source = metadata.mapFunction(this.sourceClass);
-      this.targetModel[metadata.propertyKey] = mapClasses(source, metadata.options.type, this.options);
+
+      if (source instanceof Array) {
+        this.targetModel[metadata.propertyKey] = source.map(s => mapClasses(s, metadata.options!.type!, this.options));
+      } else {
+        this.targetModel[metadata.propertyKey] = mapClasses(source, metadata.options.type, this.options);
+      }
     }
   }
 

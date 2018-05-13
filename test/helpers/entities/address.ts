@@ -15,6 +15,7 @@ const addressPlain = {
 /**
  * source address model
  */
+
 export const sourceAddress = new SourceAddressModel();
 
 sourceAddress.addressLine1 = addressPlain.addressLine1;

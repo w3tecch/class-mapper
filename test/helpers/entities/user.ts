@@ -1,4 +1,5 @@
 import { sourceAddress, targetAddress } from './address';
+import { sourceCars, targetCars } from './cars';
 import { SourceUserModel } from '../models/source-user.model';
 import { TargetUserModel } from '../models/target-user.model';
 
@@ -14,11 +15,13 @@ const userPlain = {
 /**
  * source user model
  */
+
 export const sourceUser = new SourceUserModel();
 
 sourceUser.name1 = userPlain.name1;
 sourceUser.name2 = userPlain.name2;
 sourceUser.address1 = sourceAddress;
+sourceUser.car1 = sourceCars;
 
 /**
  * target user model
@@ -29,3 +32,4 @@ export const targetUser = new TargetUserModel();
 targetUser.firstName = userPlain.name1;
 targetUser.lastName = userPlain.name2;
 targetUser.address = targetAddress;
+targetUser.cars = targetCars;
