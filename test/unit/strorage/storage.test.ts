@@ -1,5 +1,5 @@
 import { metadataStorage } from '../../../src/storage/storage';
-import { mapFromSourceModelFirstName, target } from '../../helpers/entities/map-from-source';
+import { mapFromSourceModelFirstName, userModelTarget } from '../../helpers/entities/map-from-source';
 
 beforeAll(() => {
   metadataStorage.clear();
@@ -16,14 +16,14 @@ describe('metaDataStorage', () => {
 
   test('addMapFromSource method must save and load metadata to storage', () => {
     metadataStorage.addMapFromSource(mapFromSourceModelFirstName);
-    const mapFromSourceMetadata = metadataStorage.getMapFromSource(target);
+    const mapFromSourceMetadata = metadataStorage.getMapFromSource(userModelTarget);
 
     expect(mapFromSourceMetadata).toEqual([mapFromSourceModelFirstName]);
   });
 
   test('clear method must remove all metadata', () => {
     metadataStorage.clear();
-    const mapFromSourceMetadata = metadataStorage.getMapFromSource(target);
+    const mapFromSourceMetadata = metadataStorage.getMapFromSource(userModelTarget);
 
     expect(mapFromSourceMetadata).toEqual([]);
   });
