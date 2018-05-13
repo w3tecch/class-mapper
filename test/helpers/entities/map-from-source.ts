@@ -16,7 +16,7 @@ export const mapFromSourceModelFirstName = new MapFromSourceModel(
   options
 );
 
-export const mapFromSourceModelLastName = new MapFromSourceModel(
+const mapFromSourceModelLastName = new MapFromSourceModel(
   target,
   'lastName',
   source => source.name2,
