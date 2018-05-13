@@ -8,7 +8,7 @@ import { metadataStorage } from '../storage/storage';
  * @param options Mapping options
  */
 export const MapFromSource = (mapFunction: TMapFunction, options?: IMapOptions) => {
-  return (target: any, propertyKey: string) => {
+  return (target: {}, propertyKey: string) => {
     const metadata = new MapFromSourceModel(target.constructor, propertyKey, mapFunction, options);
     metadataStorage.addMapFromSource(metadata);
   };
