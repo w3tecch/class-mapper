@@ -1,3 +1,4 @@
+import { mapClasses } from '../functions/map-classes.function';
 import { IMapClass } from '../interfaces/map-class.interface';
 import { IMapOptions } from '../interfaces/map-options.interface';
 import { MapFromSourceModel } from '../models/map-from-source.model';
@@ -17,17 +18,17 @@ export class ClassMapper<T, U> {
   }
 
   public mapClasses(): U {
-    this.executeMapFunctions();
-
-    return this.targetModel;
-  }
-
-  private executeMapFunctions(): void {
     const filteredMetadata = this.filterMetadata();
 
     filteredMetadata.forEach(metadata => {
-      this.targetModel[metadata.propertyKey] = metadata.mapFunction(this.sourceClass);
+      if (this.isNestedType(metadata)) {
+        this.assignRecursive(metadata);
+      } else {
+        this.assignValue(metadata);
+      }
     });
+
+    return this.targetModel;
   }
 
   private filterMetadata(): MapFromSourceModel[] {
@@ -64,5 +65,26 @@ export class ClassMapper<T, U> {
     }
 
     return transFromProperty;
+  }
+
+  /**
+   * Check if type to assign value is another deep nested object
+   */
+  private isNestedType(metadata: MapFromSourceModel): boolean {
+    return metadata.options && metadata.options.type ? true : false;
+  }
+
+  /**
+   * Execute mapClasses function for nested object
+   */
+  private assignRecursive(metadata: MapFromSourceModel): void {
+    if (metadata.options && metadata.options.type) {
+      const source = metadata.mapFunction(this.sourceClass);
+      this.targetModel[metadata.propertyKey] = mapClasses(source, metadata.options.type, this.options);
+    }
+  }
+
+  private assignValue(metadata: MapFromSourceModel): void {
+    this.targetModel[metadata.propertyKey] = metadata.mapFunction(this.sourceClass);
   }
 }

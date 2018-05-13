@@ -1,4 +1,6 @@
+import { IMapClass } from '.';
+
 export interface IMapOptions {
-  type?: {};
+  type?: IMapClass<any>;
   groups?: string[];
 }
