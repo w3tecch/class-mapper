@@ -23,7 +23,15 @@ const mapFromSourceModelLastName = new MapFromSourceModel(
   options
 );
 
+const mapFromSourceModelAddress = new MapFromSourceModel(
+  userModelTarget,
+  'address',
+  source => source.address1,
+  options
+);
+
 export const mapFromSourceModels = [
   mapFromSourceModelFirstName,
-  mapFromSourceModelLastName
+  mapFromSourceModelLastName,
+  mapFromSourceModelAddress
 ];
