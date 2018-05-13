@@ -1,5 +1,6 @@
 import { IMapOptions } from '../../../src/interfaces/map-options.interface';
 import { MapFromSourceModel } from '../../../src/models/map-from-source.model';
+import { TargetAddressModel } from '../models/target-address.model';
 import { TargetUserModel } from '../models/target-user.model';
 
 /**
@@ -8,6 +9,8 @@ import { TargetUserModel } from '../models/target-user.model';
 
 export const userModelTarget = new TargetUserModel().constructor;
 const options: IMapOptions = { groups: ['customer'] };
+const addressOptions: IMapOptions = Object.assign(options);
+addressOptions.type = TargetAddressModel;
 
 export const mapFromSourceModelFirstName = new MapFromSourceModel(
   userModelTarget,
@@ -27,7 +30,7 @@ const mapFromSourceModelAddress = new MapFromSourceModel(
   userModelTarget,
   'address',
   source => source.address1,
-  options
+  addressOptions
 );
 
 export const mapFromSourceModels = [

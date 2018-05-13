@@ -8,6 +8,6 @@ export class TargetUserModel {
   @MapFromSource(source => source.name2, { groups: ['customer'] })
   public lastName!: string;
 
-  @MapFromSource(source => source.address1, { groups: ['customer'] })
+  @MapFromSource(source => source.address1, { type: TargetAddressModel, groups: ['customer'] })
   public address!: TargetAddressModel;
 }
