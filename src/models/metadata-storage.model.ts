@@ -20,8 +20,8 @@ export class MetadataStorageModel {
     this.propertyTypes.push(propertyType);
   }
 
-  public getPropertyType(target: {}): PropertyTypeModel[] {
-    return this.propertyTypes.filter(p => p.target === target);
+  public getPropertyType(target: {}, propertyKey: string): PropertyTypeModel | undefined {
+    return this.propertyTypes.find(p => p.target === target && p.propertyKey === propertyKey);
   }
 
   public clear(): void {

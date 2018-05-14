@@ -77,14 +77,28 @@ yarn add class-mapper
 This method maps a source class to your target class
 
 ```typescript
-import {mapClasses} from 'class-mapper';
+import {mapClasses, MapFromSource, PropertyType} from 'class-mapper';
+
+class SourceCarModel {
+  public attribute1: string;
+  public attribute2: string;
+}
 
 class SourceUserModel {
   public name1!: string;
   public name2!: string;
+  public car1!: SourceCarModel;
 }
 
 const sourceUser: SourceUserModel = new SourceUserModel();
+
+class TargetCarModel {
+  @MapFromSource(sourceCar => sourceCar.attribute1)
+  public manufacturer!: string;
+
+  @MapFromSource(sourceCar => sourceCar.attribute2)
+  public model!: string;
+}
 
 class TargetUserModel {
   @MapFromSource(sourceUser => sourceUser.name1)
@@ -92,6 +106,10 @@ class TargetUserModel {
 
   @MapFromSource(sourceUser => sourceUser.name2)
   public lastName!: string;
+
+  @PropertyType(TargetCarModel)
+  @MapFromSource(sourceUser => sourceUser.car1)
+  public cars!: TargetCarModel[];
 }
 
 const targetUser: TargetUserModel = mapClasses(TargetUserModel, sourceUser);

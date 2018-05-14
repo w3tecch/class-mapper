@@ -2,6 +2,7 @@ import { mapClasses } from '../functions/map-classes.function';
 import { IMapClass } from '../interfaces/map-class.interface';
 import { IMapOptions } from '../interfaces/map-options.interface';
 import { MapFromSourceModel } from '../models/map-from-source.model';
+import { PropertyTypeModel } from '../models/property-type.model';
 import { metadataStorage } from '../storage/storage';
 
 export class ClassMapper<T, U> {
@@ -18,11 +19,13 @@ export class ClassMapper<T, U> {
   }
 
   public mapClasses(): U {
-    const filteredMetadata = this.filterMetadata();
+    const mapFromSourceMetadata = this.filterMetadata();
 
-    filteredMetadata.forEach(metadata => {
-      if (this.isNestedType(metadata)) {
-        this.assignRecursive(metadata);
+    mapFromSourceMetadata.forEach(metadata => {
+      const propertyTypeMetadata = metadataStorage.getPropertyType(this.targetClass, metadata.propertyKey);
+
+      if (propertyTypeMetadata) {
+        this.assignRecursive(metadata, propertyTypeMetadata);
       } else {
         this.assignValue(metadata);
       }
@@ -68,25 +71,17 @@ export class ClassMapper<T, U> {
   }
 
   /**
-   * Check if type to assign value is another deep nested object
-   */
-  private isNestedType(metadata: MapFromSourceModel): boolean {
-    return metadata.options && metadata.options.type ? true : false;
-  }
-
-  /**
    * Execute mapClasses function for nested object and array
    */
-  private assignRecursive(metadata: MapFromSourceModel): void {
-    if (metadata.options && metadata.options.type) {
-      const source = metadata.mapFunction(this.sourceClass);
+  private assignRecursive(mapFromSource: MapFromSourceModel, propertyType: PropertyTypeModel): void {
+    const source = mapFromSource.mapFunction(this.sourceClass);
 
-      if (source instanceof Array) {
-        this.targetModel[metadata.propertyKey] = source.map(s => mapClasses(s, metadata.options!.type!, this.options));
-      } else {
-        this.targetModel[metadata.propertyKey] = mapClasses(source, metadata.options.type, this.options);
-      }
+    if (source instanceof Array) {
+      this.targetModel[mapFromSource.propertyKey] = source.map(s => mapClasses(s, propertyType.propertyType, this.options));
+    } else {
+      this.targetModel[mapFromSource.propertyKey] = mapClasses(source, propertyType.propertyType, this.options);
     }
+
   }
 
   private assignValue(metadata: MapFromSourceModel): void {
