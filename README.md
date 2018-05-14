@@ -87,7 +87,7 @@ class SourceCarModel {
 class SourceUserModel {
   public name1!: string;
   public name2!: string;
-  public car1!: SourceCarModel;
+  public car1!: SourceCarModel[];
 }
 
 const sourceUser: SourceUserModel = new SourceUserModel();
