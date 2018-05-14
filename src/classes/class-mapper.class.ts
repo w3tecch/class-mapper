@@ -76,12 +76,9 @@ export class ClassMapper<T, U> {
   private assignRecursive(mapFromSource: MapFromSourceModel, propertyType: PropertyTypeModel): void {
     const source = mapFromSource.mapFunction(this.sourceClass);
 
-    if (source instanceof Array) {
-      this.targetModel[mapFromSource.propertyKey] = source.map(s => mapClasses(s, propertyType.propertyType, this.options));
-    } else {
-      this.targetModel[mapFromSource.propertyKey] = mapClasses(source, propertyType.propertyType, this.options);
-    }
-
+    this.targetModel[mapFromSource.propertyKey] = source instanceof Array
+      ? source.map(s => mapClasses(s, propertyType.propertyType, this.options))
+      : this.targetModel[mapFromSource.propertyKey] = mapClasses(source, propertyType.propertyType, this.options);
   }
 
   private assignValue(metadata: MapFromSourceModel): void {
