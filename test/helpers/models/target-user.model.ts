@@ -9,9 +9,11 @@ export class TargetUserModel {
   @MapFromSource(source => source.name2, { groups: ['customer'] })
   public lastName!: string;
 
-  @MapFromSource(source => source.address1, { type: TargetAddressModel, groups: ['customer'] })
+  @PropertyType(TargetAddressModel)
+  @MapFromSource(source => source.address1, { groups: ['customer'] })
   public address!: TargetAddressModel;
 
-  @MapFromSource(source => source.car1, { type: TargetCarModel, groups: ['customer'] })
+  @PropertyType(TargetCarModel)
+  @MapFromSource(source => source.car1, { groups: ['customer'] })
   public cars!: TargetCarModel[];
 }
