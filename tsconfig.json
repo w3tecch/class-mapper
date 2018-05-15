@@ -11,18 +11,19 @@
     ],
     "moduleResolution": "node",
     "importHelpers": true,
-    "declaration": true,
+    "allowJs": true,
     "pretty": true,
     "sourceMap": true,
     "inlineSources": true,
     "noUnusedLocals": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "experimentalDecorators": true
   },
   "exclude": [
+    "test",
     "node_modules",
     "dist",
     "es",
-    "lib",
-    "test"
+    "lib"
   ]
 }

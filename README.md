@@ -72,24 +72,47 @@ yarn add class-mapper
 
 ## ❯ Methods
 
-### uglyToClean
+### mapClasses
 
-This method maps an ugly class to your defined clean class
-
-```typescript
-import {uglyToClean} from 'class-mapper';
-
-const cleanUser = uglyToClean(CleanUserModel, uglyUser);
-```
-
-### cleanToUgly
-
-This method maps your defined clean class back to ugly class
+This method maps a source class to your target class
 
 ```typescript
-import {cleanToUgly} from 'class-mapper';
+import {mapClasses, MapFromSource, PropertyType} from 'class-mapper';
 
-const uglyUser = cleanToUgly(UglyUserModel, cleanUser);
+class SourceCarModel {
+  public attribute1: string;
+  public attribute2: string;
+}
+
+class SourceUserModel {
+  public name1!: string;
+  public name2!: string;
+  public car1!: SourceCarModel[];
+}
+
+const sourceUser: SourceUserModel = new SourceUserModel();
+
+class TargetCarModel {
+  @MapFromSource(sourceCar => sourceCar.attribute1)
+  public manufacturer!: string;
+
+  @MapFromSource(sourceCar => sourceCar.attribute2)
+  public model!: string;
+}
+
+class TargetUserModel {
+  @MapFromSource(sourceUser => sourceUser.name1)
+  public firstName!: string;
+
+  @MapFromSource(sourceUser => sourceUser.name2)
+  public lastName!: string;
+
+  @PropertyType(TargetCarModel)
+  @MapFromSource(sourceUser => sourceUser.car1)
+  public cars!: TargetCarModel[];
+}
+
+const targetUser: TargetUserModel = mapClasses(TargetUserModel, sourceUser);
 ```
 
 ## ❯ License

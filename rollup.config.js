@@ -11,7 +11,7 @@ const pkg = require('./package');
 export default {
   input: 'es/index.js',
   output: {
-    file: 'dist/bundle.js',
+    file: 'dist/class-mapper.js',
     name: pascalCase(pkg.name),
     sourceMap: true,
     format: 'umd',
