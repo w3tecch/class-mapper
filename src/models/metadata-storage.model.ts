@@ -1,3 +1,4 @@
+import find from 'lodash-es/find';
 import { MapFromSourceModel } from './map-from-source.model';
 import { PropertyTypeModel } from './property-type.model';
 
@@ -21,7 +22,7 @@ export class MetadataStorageModel {
   }
 
   public getPropertyType(target: {}, propertyKey: string): PropertyTypeModel | undefined {
-    return this.propertyTypes.find(p => p.target === target && p.propertyKey === propertyKey);
+    return find(this.propertyTypes, p => p.target === target && p.propertyKey === propertyKey);
   }
 
   public clear(): void {

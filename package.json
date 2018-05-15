@@ -18,8 +18,8 @@
   "types": "dist/class-mapper.d.ts",
   "scripts": {
     "build": "npm run build:lib & npm run build:umd",
-    "build:lib": "tsc --outDir lib --module commonjs",
-    "build:es": "tsc --outDir es --module es2015",
+    "build:lib": "tsc --outDir lib --module commonjs --allowJs false --declaration",
+    "build:es": "tsc --outDir es --module es2015 --allowJs false --declaration",
     "build:umd": "npm run build:es && rollup --config && dts-bundle --name dist/class-mapper --main es --outputAsModuleFolder",
     "clean": "rimraf dist es lib test/coverage",
     "typecheck": "tsc --noEmit",
@@ -47,8 +47,11 @@
   ],
   "jest": {
     "transform": {
-      ".(tsx?)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      "^.+\\.(js|ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!lodash-es/.*)"
+    ],
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "testPathIgnorePatterns": [
       "<rootDir>/(node_modules|lib|es|dist)"
@@ -68,10 +71,12 @@
   },
   "dependencies": {
     "@types/node": "^8.10.15",
+    "lodash-es": "^4.17.10",
     "tslib": "^1.6.0"
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",
+    "@types/lodash-es": "^4.17.0",
     "coveralls": "^3.0.1",
     "dts-bundle": "^0.7.2",
     "jest": "^22.4.3",

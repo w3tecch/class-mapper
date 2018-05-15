@@ -23,5 +23,13 @@
       "single"
     ],
     "trailing-comma": false
+  },
+  "jsRules": {
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "object-literal-sort-keys": false,
+    "trailing-comma": false
   }
 }
