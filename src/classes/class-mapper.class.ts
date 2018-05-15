@@ -1,4 +1,3 @@
-import { mapClasses } from '../functions/map-classes.function';
 import { IMapClass } from '../interfaces/map-class.interface';
 import { IMapOptions } from '../interfaces/map-options.interface';
 import { MapFromSourceModel } from '../models/map-from-source.model';
@@ -77,8 +76,8 @@ export class ClassMapper<T, U> {
     const source = mapFromSource.mapFunction(this.sourceClass);
 
     this.targetModel[mapFromSource.propertyKey] = source instanceof Array
-      ? source.map(s => mapClasses(s, propertyType.propertyType, this.options))
-      : this.targetModel[mapFromSource.propertyKey] = mapClasses(source, propertyType.propertyType, this.options);
+      ? source.map(s => new ClassMapper(s, propertyType.propertyType, this.options).mapClasses())
+      : new ClassMapper(source, propertyType.propertyType, this.options).mapClasses();
   }
 
   private assignValue(metadata: MapFromSourceModel): void {
