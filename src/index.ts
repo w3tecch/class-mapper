@@ -1,5 +1,3 @@
-export class ClassMapper {
-  public greet(): string {
-    return 'hello world';
-  }
-}
+export * from './decorators/index';
+export * from './interfaces/index';
+export * from './functions/index';
