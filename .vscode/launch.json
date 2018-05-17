@@ -1,20 +1,27 @@
 {
   "version": "0.2.0",
-  "configurations": [{
-    "name": "Debug",
-    "type": "node",
-    "request": "launch",
-    "protocol": "inspector",
-    "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
-    "args": [
-      "--env=jsdom",
-      "--no-cache",
-      "--runInBand",
-      "--findRelatedTests",
-      "${file}"
-    ],
-    "skipFiles": [
-      "<node_internals>/**/*.js"
-    ]
-  }]
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "All Jest Files",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      "args": [
+        "--runInBand"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Current Jest File",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      "args": [
+        "${relativeFile}"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
 }
