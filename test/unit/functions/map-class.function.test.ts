@@ -1,11 +1,11 @@
 import { mapClasses } from '../../../src/functions/map-classes.function';
-import { sourceUser, targetUser as expectedTargetUser } from '../../helpers/entities/user';
-import { TargetUserModel } from '../../helpers/models/target-user.model';
+import { sourceCustomer, targetCustomer as expectedTargetCustomer } from '../../helpers/entities/customer';
+import { TargetCustomerModel } from '../../helpers/models/target-customer.model';
 
 describe('mapClasses', () => {
-  test('must return metadata from storage with one group assigned', () => {
-    const targetUser = mapClasses(sourceUser, TargetUserModel, { groups: ['customer'] });
+  test('must return mapped class with one group assigned', () => {
+    const targetCustomer = mapClasses(sourceCustomer, TargetCustomerModel, { groups: ['customer'] });
 
-    expect(targetUser).toEqual(expectedTargetUser);
+    expect(targetCustomer).toEqual(expectedTargetCustomer);
   });
 });

@@ -14,7 +14,13 @@ export class MetadataStorageModel {
   }
 
   public getMapFromSource(target: {}): MapFromSourceModel[] {
-    return this.mapFromSource.filter(m => m.target === target);
+    const mapFromSource = this.mapFromSource.filter(m => m.target === target);
+
+    if (mapFromSource.length) {
+      return [...this.getMapFromSource(Object.getPrototypeOf(target)), ...mapFromSource];
+    }
+
+    return mapFromSource;
   }
 
   public addPropertyType(propertyType: PropertyTypeModel): void {

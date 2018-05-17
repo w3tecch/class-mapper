@@ -2,7 +2,7 @@ import { SourceAddressModel } from '../models/source-address.model';
 import { TargetAddressModel } from '../models/target-address.model';
 
 /**
- * plain user structure
+ * plain address structure
  */
 
 const addressPlain = {

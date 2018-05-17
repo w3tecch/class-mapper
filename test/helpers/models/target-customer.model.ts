@@ -1,15 +1,10 @@
 import { TargetAddressModel } from './target-address.model';
 import { TargetCarModel } from './target-car.model';
+import { TargetPersonModel } from './target-person.model';
 import { MapFromSource } from '../../../src/decorators/map-from-source.decorator';
 import { PropertyType } from '../../../src/decorators/property-type.decorator';
 
-export class TargetUserModel {
-  @MapFromSource(source => source.name1, { groups: ['customer'] })
-  public firstName!: string;
-
-  @MapFromSource(source => source.name2, { groups: ['customer'] })
-  public lastName!: string;
-
+export class TargetCustomerModel extends TargetPersonModel {
   @PropertyType(TargetAddressModel)
   @MapFromSource(source => source.address1, { groups: ['customer'] })
   public address!: TargetAddressModel;
