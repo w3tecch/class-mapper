@@ -1,9 +1,8 @@
 import { SourceAddressModel } from './source-address.model';
 import { SourceCarModel } from './source-car.model';
+import { SourcePersonModel } from './source-person.model';
 
-export class SourceUserModel {
-  public name1!: string;
-  public name2!: string;
+export class SourceCustomerModel extends SourcePersonModel {
   public address1!: SourceAddressModel;
   public car1!: SourceCarModel[];
 }
