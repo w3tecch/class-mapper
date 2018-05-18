@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Documentation Index</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top ">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Documentation</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#mapClasses">mapClasses</a></li><li><a href="global.html#MapFromSource">MapFromSource</a></li><li><a href="global.html#MapFromSourceModel">MapFromSourceModel</a></li><li><a href="global.html#metadataStorage">metadataStorage</a></li><li><a href="global.html#MetadataStorageModel">MetadataStorageModel</a></li><li><a href="global.html#PropertyMetadataModel">PropertyMetadataModel</a></li><li><a href="global.html#PropertyType">PropertyType</a></li><li><a href="global.html#PropertyTypeModel">PropertyTypeModel</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+    <section class="readme-section">
+        <article><p align="center">
+  <img src="./icon.png" alt="w3tec" width="400" />
+</p>
+
+<h1 align="center">Class Mapper</h1>
+
+<p align="center">
+  <a href="https://david-dm.org/w3tecch/class-mapper">
+    <img src="https://david-dm.org/w3tecch/class-mapper/status.svg?style=flat" alt="dependency" />
+  </a>
+  <a href="https://travis-ci.org/w3tecch/class-mapper">
+    <img src="https://travis-ci.org/w3tecch/class-mapper.svg?branch=master" alt="travis" />
+  </a>
+  <a href="https://ci.appveyor.com/project/DaNautilus/class-mapper/branch/master">
+    <img src="https://ci.appveyor.com/api/projects/status/jkcquiufl9us4epw/branch/master?svg=true&passingText=windows%20passing&pendingText=windows%20pending&failingText=windows%20failing" alt="appveyor" />
+  </a>
+  <a href="https://coveralls.io/github/w3tecch/class-mapper?branch=master">
+    <img src="https://coveralls.io/repos/github/w3tecch/class-mapper/badge.svg?branch=master" alt="coveralls" />
+  </a>
+</p>
+
+<p align="center">
+  <b>A easy to use way to map any ugly backend structures into clean TypeScript/ES6 models.</b></br>
+  <span>Inspired typestack <a href="https://github.com/typestack/class-transformer">class-transformer</a></span></br>
+  <sub>Made with ❤️ by <a href="https://github.com/w3tecch">w3tech</a></sub>
+</p>
+
+<p><br /></p>
+<p><img src="./w3tec-divider.png" alt="divider"></p>
+<h2>❯ Why</h2><p>Are you tired of ugly and weird backend structures which makes it challenging to work with in your application 🤯? Here comes a solution 🎉! Just use class-mapper to map all weird structures into TypeScript and ES6 models 👉 YOU 🤗 like to work with in your web frontend or Node.js application and not backend guys 🤪. </p>
+<p>Try it!! We are happy to hear your feedback or any kind of new features.</p>
+<p><img src="./w3tec-divider.png" alt="divider"></p>
+<h2>❯ Table of Contents</h2><ul>
+<li><a href="#-installation">Installation</a></li>
+<li><a href="#-methods">Methods</a></li>
+<li><a href="#-license">License</a></li>
+</ul>
+<p><img src="./w3tec-divider.png" alt="divider"></p>
+<h2>❯ Installation</h2><h3>Step 1: Get library via npm or yarn</h3><pre class="prettyprint source lang-shell"><code>npm install class-mapper --save</code></pre><p>or with yarn</p>
+<pre class="prettyprint source lang-shell"><code>yarn add class-mapper</code></pre><h3>Step 2: Add library to your project</h3><h4>Browser</h4><pre class="prettyprint source lang-html"><code>&lt;html>
+   &lt;head>
+       &lt;script src=&quot;node_modules/class-mapper/dist/class-mapper.js&quot;>&lt;/script>
+   &lt;/head>
+&lt;/html></code></pre><h2>❯ Methods</h2><h3>mapClasses</h3><p>This method maps a source class to your target class</p>
+<pre class="prettyprint source lang-typescript"><code>import {mapClasses, MapFromSource, PropertyType} from 'class-mapper';
+
+/**
+ * Source classes
+ */
+
+abstract class SourcePersonModel {
+  public name1: string;
+  public name1: string;
+}
+
+class SourceCarModel {
+  public attribute1: string;
+  public attribute2: string;
+}
+
+class SourceCustomerModel extends SourcePersonModel {
+  public car1!: SourceCarModel[];
+}
+
+const sourceUser: SourceCustomerModel = new SourceCustomerModel();
+
+/**
+ * Target classes
+ */
+
+abstract class TargetPersonModel {
+  @MapFromSource(sourceUser => sourceUser.name1)
+  public firstName!: string;
+
+  @MapFromSource(sourceUser => sourceUser.name2)
+  public lastName!: string;
+}
+
+class TargetCarModel {
+  @MapFromSource(sourceCar => sourceCar.attribute1)
+  public manufacturer!: string;
+
+  @MapFromSource(sourceCar => sourceCar.attribute2)
+  public model!: string;
+}
+
+class TargetCustomerModel extends TargetPersonModel {
+  @PropertyType(TargetCarModel)
+  @MapFromSource(sourceUser => sourceUser.car1)
+  public cars!: TargetCarModel[];
+}
+
+const targetUser: TargetCustomerModel = mapClasses(TargetCustomerModel, sourceUser);</code></pre><h2>❯ License</h2><p><a href="/LICENSE">MIT</a></p></article>
+    </section>
+
+
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	
+		on 2018-05-18T23:11:58+02:00
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : false,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

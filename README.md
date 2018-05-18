@@ -40,8 +40,8 @@ Try it!! We are happy to hear your feedback or any kind of new features.
 ## ❯ Table of Contents
 
 - [Installation](#-installation)
-- [License](#-license)
 - [Methods](#-methods)
+- [License](#-license)
 
 ![divider](./w3tec-divider.png)
 
