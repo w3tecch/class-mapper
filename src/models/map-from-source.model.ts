@@ -4,6 +4,7 @@ import { IMapOptions } from '../interfaces/map-options.interface';
 export type TMapFunction = (source: any) => any;
 
 /**
+ * @ignore
  * model to store metadata of MapFrom decorator
  */
 export class MapFromSourceModel extends PropertyMetadataModel {

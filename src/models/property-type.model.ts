@@ -2,6 +2,7 @@ import { PropertyMetadataModel } from './property-metadata.model';
 import { IMapClass } from '../interfaces/map-class.interface';
 
 /**
+ * @ignore
  * model to store metadata of Type decorator
  */
 export class PropertyTypeModel extends PropertyMetadataModel {

@@ -1,4 +1,5 @@
 /**
+ * @ignore
  * model to store metadata of property decorators
  */
 export abstract class PropertyMetadataModel {
