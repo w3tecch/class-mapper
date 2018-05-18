@@ -14,7 +14,7 @@ describe('metaDataStorage', () => {
     expect(metadataStorage.getMapFromSource).toBeDefined();
   });
 
-  test.skip('addMapFromSource method must save and load metadata to storage', () => {
+  test('addMapFromSource method must save and load metadata to storage', () => {
     metadataStorage.addMapFromSource(mapFromSourceModelFirstName);
     const mapFromSourceMetadata = metadataStorage.getMapFromSource(customerModelTarget);
 
