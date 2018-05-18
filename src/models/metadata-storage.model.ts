@@ -15,9 +15,10 @@ export class MetadataStorageModel {
 
   public getMapFromSource(target: {}): MapFromSourceModel[] {
     const mapFromSource = this.mapFromSource.filter(m => m.target === target);
+    const targetPrototype = Object.getPrototypeOf(target);
 
-    return mapFromSource.length
-      ? [...this.getMapFromSource(Object.getPrototypeOf(target)), ...mapFromSource]
+    return targetPrototype
+      ? [...this.getMapFromSource(targetPrototype), ...mapFromSource]
       : mapFromSource;
   }
 
