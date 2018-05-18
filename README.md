@@ -79,18 +79,37 @@ This method maps a source class to your target class
 ```typescript
 import {mapClasses, MapFromSource, PropertyType} from 'class-mapper';
 
+/**
+ * Source classes
+ */
+
+abstract class SourcePersonModel {
+  public name1: string;
+  public name1: string;
+}
+
 class SourceCarModel {
   public attribute1: string;
   public attribute2: string;
 }
 
-class SourceUserModel {
-  public name1!: string;
-  public name2!: string;
+class SourceCustomerModel extends SourcePersonModel {
   public car1!: SourceCarModel[];
 }
 
-const sourceUser: SourceUserModel = new SourceUserModel();
+const sourceUser: SourceCustomerModel = new SourceCustomerModel();
+
+/**
+ * Target classes
+ */
+
+abstract class TargetPersonModel {
+  @MapFromSource(sourceUser => sourceUser.name1)
+  public firstName!: string;
+
+  @MapFromSource(sourceUser => sourceUser.name2)
+  public lastName!: string;
+}
 
 class TargetCarModel {
   @MapFromSource(sourceCar => sourceCar.attribute1)
@@ -100,19 +119,13 @@ class TargetCarModel {
   public model!: string;
 }
 
-class TargetUserModel {
-  @MapFromSource(sourceUser => sourceUser.name1)
-  public firstName!: string;
-
-  @MapFromSource(sourceUser => sourceUser.name2)
-  public lastName!: string;
-
+class TargetCustomerModel extends TargetPersonModel {
   @PropertyType(TargetCarModel)
   @MapFromSource(sourceUser => sourceUser.car1)
   public cars!: TargetCarModel[];
 }
 
-const targetUser: TargetUserModel = mapClasses(TargetUserModel, sourceUser);
+const targetUser: TargetCustomerModel = mapClasses(TargetCustomerModel, sourceUser);
 ```
 
 ## ❯ License
