@@ -3,6 +3,7 @@ import { MapFromSourceModel } from './map-from-source.model';
 import { PropertyTypeModel } from './property-type.model';
 
 /**
+ * @ignore
  * model to store all metadata of decorators
  */
 export class MetadataStorageModel {

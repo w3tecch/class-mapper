@@ -8,7 +8,9 @@
   "source": {
     "include": [
       "es",
-      "README.md"
+      "README.md",
+      "icon.png",
+      "w3tec-divider.png"
     ],
     "includePattern": ".js$",
     "excludePattern": "(node_modules/|docs)"
