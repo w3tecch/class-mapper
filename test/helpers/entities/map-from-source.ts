@@ -1,7 +1,5 @@
 import { IMapOptions } from '../../../src/interfaces/map-options.interface';
 import { MapFromSourceModel } from '../../../src/models/map-from-source.model';
-import { TargetAddressModel } from '../models/target-address.model';
-import { TargetCarModel } from '../models/target-car.model';
 import { TargetCustomerModel } from '../models/target-customer.model';
 
 /**
