@@ -34,8 +34,9 @@ export class ClassMapper<T, U> {
   }
 
   private filterMetadata(): MapFromSourceModel[] {
-    return this.mapFromSourceMetadata.filter(metadata =>
-      this.checkGroups(metadata.options));
+    return this.mapFromSourceMetadata
+      .filter(metadata => this.checkGroups(metadata.options))
+      .filter(metadata => this.checkMapToggle(metadata.options));
   }
 
   private checkGroups(metadataOptions?: IMapOptions): boolean {
@@ -67,6 +68,16 @@ export class ClassMapper<T, U> {
     }
 
     return transFromProperty;
+  }
+
+  /**
+   * Check if MapFromSource decorator is enabled
+   * @param metadataOptions
+   */
+  private checkMapToggle(metadataOptions?: IMapOptions): boolean {
+    return metadataOptions && metadataOptions.enabled
+      ? metadataOptions.enabled(this.sourceClass)
+      : true;
   }
 
   /**

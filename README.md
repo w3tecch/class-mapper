@@ -31,7 +31,7 @@
 
 ## ❯ Why
 
-Are you tired of ugly and weird backend structures which makes it challenging to work with in your application 🤯? Here comes a solution 🎉! Just use class-mapper to map all weird structures into TypeScript and ES6 models 👉 YOU 🤗 like to work with in your web frontend or Node.js application and not backend guys 🤪. 
+Are you tired of ugly and weird backend structures which makes it challenging to work with in your application 🤯? Here comes a solution 🎉! Just use class-mapper to map all weird structures into TypeScript and ES6 models 👉 YOU 🤗 like to work with in your web frontend or Node.js application and not backend guys 🤪.
 
 Try it!! We are happy to hear your feedback or any kind of new features.
 
@@ -85,7 +85,7 @@ import {mapClasses, MapFromSource, PropertyType} from 'class-mapper';
 
 abstract class SourcePersonModel {
   public name1: string;
-  public name1: string;
+  public name2: string;
 }
 
 class SourceCarModel {
@@ -104,25 +104,89 @@ const sourceUser: SourceCustomerModel = new SourceCustomerModel();
  */
 
 abstract class TargetPersonModel {
-  @MapFromSource(sourceUser => sourceUser.name1)
+  @MapFromSource((sourceUser: SourcePersonModel) => sourceUser.name1)
   public firstName!: string;
 
-  @MapFromSource(sourceUser => sourceUser.name2)
+  @MapFromSource((sourceUser: SourcePersonModel) => sourceUser.name2)
   public lastName!: string;
 }
 
 class TargetCarModel {
-  @MapFromSource(sourceCar => sourceCar.attribute1)
+  @MapFromSource((sourceCar: SourceCarModel) => sourceCar.attribute1)
   public manufacturer!: string;
 
-  @MapFromSource(sourceCar => sourceCar.attribute2)
+  @MapFromSource(sourceCar: SourceCarModel) => sourceCar.attribute2)
   public model!: string;
 }
 
 class TargetCustomerModel extends TargetPersonModel {
   @PropertyType(TargetCarModel)
-  @MapFromSource(sourceUser => sourceUser.car1)
+  @MapFromSource((sourceUser: SourcePersonModel) => sourceUser.car1)
   public cars!: TargetCarModel[];
+}
+
+const targetUser: TargetCustomerModel = mapClasses(TargetCustomerModel, sourceUser);
+```
+
+### Using `groups` to exclude properties
+
+With `groups` array, you can exclude properties from mapping. `MapFromSource` decorators with no `groups` option will always be mapped.
+
+```typescript
+import {mapClasses, MapFromSource, PropertyType} from 'class-mapper';
+
+/**
+ * Source class
+ */
+
+abstract class SourcePersonModel {
+  public name1: string;
+  public name1: string;
+}
+
+/**
+ * Target class
+ */
+
+const firstNameOnly = 'first-name-only';
+const lastNameOnly = 'last-name-only';
+
+abstract class TargetPersonModel {
+  @MapFromSource((sourceUser: SourcePersonModel) => sourceUser.name1, { groups: [firstNameOnly] })
+  public firstName!: string;
+
+  @MapFromSource((sourceUser: SourcePersonModel) => sourceUser.name2, { groups: [lastNameOnly] })
+  public lastName!: string;
+}
+
+const targetUser: TargetCustomerModel = mapClasses(TargetCustomerModel, sourceUser, { groups: [lastNameOnly] });
+```
+
+### Using `enabled` to exclude properties
+
+With `enabled` you can exclude conditionally properties. `MapFromSource` decorators with no `enabled` option will always be mapped.
+
+```typescript
+import {mapClasses, MapFromSource, PropertyType} from 'class-mapper';
+
+/**
+ * Source class
+ */
+
+abstract class SourcePersonModel {
+  public name1: string;
+  public name1: string;
+}
+
+/**
+ * Target class
+ */
+abstract class TargetPersonModel {
+  @MapFromSource((sourceUser: SourcePersonModel) => sourceUser.name1, { enabled: (sourceUser: SourcePersonModel) => !!sourceUser.name1 })
+  public firstName!: string;
+
+  @MapFromSource(sourceUser => sourceUser.name2, { enabled: (sourceUser: SourcePersonModel) => !!sourceUser.name2 })
+  public lastName!: string;
 }
 
 const targetUser: TargetCustomerModel = mapClasses(TargetCustomerModel, sourceUser);
