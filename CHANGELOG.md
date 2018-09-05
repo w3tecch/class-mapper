@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0] - 2018-09-05
+
+### Added
+
+- Add option to conditionally toggle `MapFromSource` decorator.
+- Improved documentation in README.md.
+
 ## [0.1.4] - 2018-05-18
 
 ### Added
