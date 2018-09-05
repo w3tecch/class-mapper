@@ -4,8 +4,8 @@
 
 ### Added
 
-- Add option to conditionally toggle MapFromSource decorator
-- Improved documentation in README.md
+- Add option to conditionally toggle `MapFromSource` decorator.
+- Improved documentation in README.md.
 
 ## [0.1.4] - 2018-05-18
 
