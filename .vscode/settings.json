@@ -16,6 +16,7 @@
     "builtins",
     "camaro",
     "kleger",
+    "nemo",
     "postbuild",
     "posttest",
     "postversion",

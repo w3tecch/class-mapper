@@ -27,11 +27,29 @@ export class MetadataStorageModel {
   }
 
   public getPropertyType(target: {}, propertyKey: string): PropertyTypeModel | undefined {
-    return find(this.propertyTypes, p => p.target === target && p.propertyKey === propertyKey);
+    const targetProtoTypes = this.flattenNestedTargets(target);
+    let propertyType: PropertyTypeModel | undefined;
+
+    for (const targetPrototype of targetProtoTypes) {
+      propertyType = find(this.propertyTypes, p => p.target === targetPrototype && p.propertyKey === propertyKey);
+
+      if (propertyType) { break; }
+    }
+
+    return propertyType;
   }
 
   public clear(): void {
     this.mapFromSource = [];
     this.propertyTypes = [];
+  }
+
+  private flattenNestedTargets(target: {}): {}[] {
+    const targetPrototypes = [target];
+    const targetPrototype = Object.getPrototypeOf(target);
+
+    return targetPrototype
+      ? [...this.flattenNestedTargets(targetPrototype), ...targetPrototypes]
+      : targetPrototypes;
   }
 }
