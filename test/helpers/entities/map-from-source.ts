@@ -28,13 +28,20 @@ const mapFromSourceModelLastName = new MapFromSourceModel(
   options
 );
 
+const mapFromSourceModelPet = new MapFromSourceModel(
+  customerModelTarget,
+  'pets',
+  source => source.name1,
+  options
+);
+
 const mapFromSourceModelAddress = new MapFromSourceModel(
   customerModelTarget,
   'address',
   source => source.address1,
   addressOptions
-
 );
+
 const mapFromSourceModelCar = new MapFromSourceModel(
   customerModelTarget,
   'cars',
@@ -45,6 +52,7 @@ const mapFromSourceModelCar = new MapFromSourceModel(
 export const mapFromSourceModels = [
   mapFromSourceModelFirstName,
   mapFromSourceModelLastName,
+  mapFromSourceModelPet,
   mapFromSourceModelAddress,
   mapFromSourceModelCar
 ];
