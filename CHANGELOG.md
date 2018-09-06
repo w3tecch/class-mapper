@@ -1,17 +1,23 @@
 # Changelog
 
+## [0.2.1] - 2018-09-06
+
+### Fixes
+
+- Fix `PropertyType` support for extended classes.
+
 ## [0.2.0] - 2018-09-05
 
 ### Added
 
 - Add option to conditionally toggle `MapFromSource` decorator.
-- Improved documentation in README.md.
+- Improved documentation in `README.md`.
 
 ## [0.1.4] - 2018-05-18
 
 ### Added
 
-- Update of documentation in README.md
+- Update of documentation in `README.md`.
 
 ### Fixes
 

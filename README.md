@@ -181,6 +181,7 @@ abstract class SourcePersonModel {
 /**
  * Target class
  */
+
 abstract class TargetPersonModel {
   @MapFromSource((sourceUser: SourcePersonModel) => sourceUser.name1, { enabled: (sourceUser: SourcePersonModel) => !!sourceUser.name1 })
   public firstName!: string;
