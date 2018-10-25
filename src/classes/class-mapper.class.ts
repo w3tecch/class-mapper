@@ -1,5 +1,7 @@
+import find from 'lodash-es/find';
 import { IMapClass } from '../interfaces/map-class.interface';
 import { IMapOptions } from '../interfaces/map-options.interface';
+import { IPropertyTypeOptions } from '../interfaces/property-type-options.interface';
 import { MapFromSourceModel } from '../models/map-from-source.model';
 import { PropertyTypeModel } from '../models/property-type.model';
 import { metadataStorage } from '../storage/storage';
@@ -21,7 +23,10 @@ export class ClassMapper<T, U> {
     const mapFromSourceMetadata = this.filterMetadata();
 
     mapFromSourceMetadata.forEach(metadata => {
-      const propertyTypeMetadata = metadataStorage.getPropertyType(this.targetClass, metadata.propertyKey);
+      const propertyTypeMetadata = find(metadataStorage.getPropertyTypes(
+        this.targetClass, metadata.propertyKey),
+        t => this.checkGroups(t.options)
+      );
 
       if (propertyTypeMetadata) {
         this.assignRecursive(metadata, propertyTypeMetadata);
@@ -39,7 +44,7 @@ export class ClassMapper<T, U> {
       .filter(metadata => this.checkMapToggle(metadata.options));
   }
 
-  private checkGroups(metadataOptions?: IMapOptions): boolean {
+  private checkGroups(metadataOptions?: IMapOptions | IPropertyTypeOptions): boolean {
     /**
      * Check if property has assigned groups. If not, transform it
      */

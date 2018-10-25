@@ -1,4 +1,3 @@
-import find from 'lodash-es/find';
 import { MapFromSourceModel } from './map-from-source.model';
 import { PropertyTypeModel } from './property-type.model';
 
@@ -26,17 +25,17 @@ export class MetadataStorageModel {
     this.propertyTypes.push(propertyType);
   }
 
-  public getPropertyType(target: {}, propertyKey: string): PropertyTypeModel | undefined {
+  public getPropertyTypes(target: {}, propertyKey: string): PropertyTypeModel[] | undefined {
     const targetProtoTypes = this.flattenNestedTargets(target);
-    let propertyType: PropertyTypeModel | undefined;
+    let propertyTypes: PropertyTypeModel[] | undefined;
 
     for (const targetPrototype of targetProtoTypes) {
-      propertyType = find(this.propertyTypes, p => p.target === targetPrototype && p.propertyKey === propertyKey);
+      propertyTypes = this.propertyTypes.filter(p => p.target === targetPrototype && p.propertyKey === propertyKey);
 
-      if (propertyType) { break; }
+      if (propertyTypes && propertyTypes.length) { break; }
     }
 
-    return propertyType;
+    return propertyTypes;
   }
 
   public clear(): void {
