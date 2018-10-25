@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.2] - 2018-10-25
+
+### Added
+
+- Add `groups` support for `PropertyType` decorator.
+
 ## [0.2.1] - 2018-09-06
 
 ### Fixes
