@@ -1,6 +1,6 @@
 {
   "name": "class-mapper",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Mapper for ES2015 and TypeScript classes",
   "author": "w3tec <info@w3tec.ch> (http://w3tec.ch/)",
   "contributors": [
