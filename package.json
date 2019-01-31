@@ -71,7 +71,6 @@
     "@types/jest": "^23.3.13",
     "@types/lodash-es": "^4.17.1",
     "@types/node": "^10.12.20",
-    "coveralls": "^3.0.1",
     "dts-bundle": "^0.7.3",
     "jest": "^24.0.0",
     "rimraf": "^2.6.3",
