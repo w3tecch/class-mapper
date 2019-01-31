@@ -9,6 +9,7 @@
       "dom",
       "es2017"
     ],
+    "allowJs": true,
     "moduleResolution": "node",
     "importHelpers": true,
     "pretty": true,
@@ -17,8 +18,6 @@
     "noUnusedLocals": true,
     "strictNullChecks": true,
     "experimentalDecorators": true,
-    "declaration": true,
-    "declarationDir": ".tmp"
   },
   "exclude": [
     "test",

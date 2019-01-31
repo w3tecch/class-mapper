@@ -23,8 +23,9 @@
     "test": "jest --env=jsdom --coverage",
     "test:watch": "jest --env=jsdom --watch --updateSnapshot",
     "prepublishOnly": "npm run build",
+    "createDeclaration": "tsc -d --emitDeclarationOnly --allowJs false",
     "prebuild": "rimraf dist .tmp .rpt2_cache",
-    "postbuild": "npm run bundle && rimraf .tmp .rpt2_cache",
+    "postbuild": "npm run createDeclaration && npm run bundle && rimraf .tmp .rpt2_cache",
     "posttest": "npm run typecheck && npm run lint",
     "preversion": "npm test",
     "postversion": "git push && git push --tags"
