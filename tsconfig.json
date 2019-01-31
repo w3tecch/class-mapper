@@ -1,29 +1,28 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
-    "outDir": ".code",
+    "module": "es6",
+    "outDir": ".tmp",
     "newLine": "LF",
     "sourceRoot": "src",
     "lib": [
       "dom",
       "es2017"
     ],
+    "allowJs": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "allowJs": true,
     "pretty": true,
     "sourceMap": true,
     "inlineSources": true,
     "noUnusedLocals": true,
     "strictNullChecks": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
   },
   "exclude": [
     "test",
     "node_modules",
     "dist",
-    "es",
-    "lib"
+    ".tmp"
   ]
 }

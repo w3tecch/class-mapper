@@ -3,6 +3,7 @@ dist
 lib
 es
 test/coverage
+.rpt2_cache/
 
 ### node ###
 logs

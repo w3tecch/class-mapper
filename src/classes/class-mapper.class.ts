@@ -1,10 +1,10 @@
 import find from 'lodash-es/find';
-import { IMapClass } from '../interfaces/map-class.interface';
 import { IMapOptions } from '../interfaces/map-options.interface';
 import { IPropertyTypeOptions } from '../interfaces/property-type-options.interface';
 import { MapFromSourceModel } from '../models/map-from-source.model';
 import { PropertyTypeModel } from '../models/property-type.model';
 import { metadataStorage } from '../storage/storage';
+import { TMapClass } from '../types';
 
 export class ClassMapper<T, U> {
   private mapFromSourceMetadata: MapFromSourceModel[];
@@ -12,7 +12,7 @@ export class ClassMapper<T, U> {
 
   constructor(
     private sourceClass: T,
-    public targetClass: IMapClass<U>,
+    public targetClass: TMapClass<U>,
     private options?: IMapOptions
   ) {
     this.mapFromSourceMetadata = metadataStorage.getMapFromSource(targetClass);
