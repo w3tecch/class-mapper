@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.3] - 2011-01-31
+
+### Added
+
+- Coveralls replaced with codecov
+- Updated dependencies
+- Simpler rollup build process
+- Auto npm deployment
+
 ## [0.2.2] - 2018-10-25
 
 ### Added
