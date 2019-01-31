@@ -1,28 +1,30 @@
-import sourcemaps from 'rollup-plugin-sourcemaps';
+import typescript from 'rollup-plugin-typescript2'
 import nodeResolve from 'rollup-plugin-node-resolve';
-import nodeGlobals from 'rollup-plugin-node-globals';
-import nodeBuiltins from 'rollup-plugin-node-builtins';
-import commonjs from 'rollup-plugin-commonjs';
-import uglify from 'rollup-plugin-uglify';
-import pascalCase from 'pascal-case';
-
-const pkg = require('./package');
+import { terser } from 'rollup-plugin-terser';
+import pkg from './package.json'
 
 export default {
-  input: 'es/index.js',
-  output: {
-    file: 'dist/class-mapper.js',
-    name: pascalCase(pkg.name),
-    sourceMap: true,
-    format: 'umd',
-    exports: 'named'
-  },
+  input: 'src/index.ts',
+  output: [
+    {
+      file: pkg.main,
+      format: 'cjs',
+      sourcemap: true,
+      compact: true
+    },
+    {
+      file: pkg.module,
+      format: 'es',
+      sourcemap: true,
+      compact: true
+    }
+  ],
   plugins: [
-    sourcemaps(),
+    typescript({
+      typescript: require('typescript'),
+      useTsconfigDeclarationDir: true
+    }),
     nodeResolve(),
-    nodeGlobals(),
-    nodeBuiltins(),
-    commonjs(),
-    uglify()
+    terser()
   ]
 };
