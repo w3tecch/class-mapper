@@ -70,16 +70,16 @@
     ]
   },
   "dependencies": {
-    "@types/node": "^8.10.15",
-    "lodash-es": "^4.17.10",
+    "lodash-es": "^4.17.11",
     "tslib": "^1.6.0"
   },
   "devDependencies": {
-    "@types/jest": "^22.2.3",
-    "@types/lodash-es": "^4.17.0",
+    "@types/jest": "^23.3.13",
+    "@types/lodash-es": "^4.17.1",
+    "@types/node": "^10.12.20",
     "coveralls": "^3.0.1",
     "dts-bundle": "^0.7.2",
-    "jest": "^22.4.3",
+    "jest": "^24.0.0",
     "pascal-case": "^2.0.1",
     "rimraf": "^2.6.1",
     "rollup": "^0.59.0",
@@ -89,8 +89,7 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-sourcemaps": "^0.4.1",
     "rollup-plugin-uglify": "^3.0.0",
-    "semver": "^5.4.0",
-    "ts-jest": "^22.4.4",
+    "ts-jest": "^23.10.5",
     "tslint": "^5.6.0",
     "typescript": "^2.8.3"
   }
